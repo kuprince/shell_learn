@@ -29,13 +29,13 @@ function ip(){
 
 # install neofetch
 function yum_install_neo(){
-   curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo && dnf install neofetch -y && clear && neofetch
+   sudo curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo &&sudo dnf install neofetch -y && clear && neofetch
 }
 function check_system_and_install_neo(){
     if(command -v apt > /dev/null); then
        sudo apt update -y &&sudo  apt install neofetch curl -y
     elif(command -v yum > /dev/null);then
-       sudo yum_install_neo
+       yum_install_neo
     elif(command -v dnf > /dev/null);then
        sudo dnf install neofetch curl -y
     elif(command -v zypper> /dev/null);then
