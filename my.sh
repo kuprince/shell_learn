@@ -14,7 +14,7 @@ function helps(){
 
 # check ipaddr
 function ip(){
-    if ( which curl > /dev/null ); then
+    if ( command -v curl > /dev/null ); then
         curl myip.ipip.net
     else
         echo "curl not found, Please install curl"
@@ -23,8 +23,7 @@ function ip(){
 
 # install neofetch
 function yum_install_neo(){
-   curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel
--7.repo && dnf install neofetch -y && clear && neofetch
+   curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo && dnf install neofetch -y && clear && neofetch
 }
 function check_system_and_install_neo(){
     if(command -v apt > /dev/null); then
@@ -45,12 +44,12 @@ function check_system_and_install_neo(){
 
 # start neofetch
 function neo(){
-    if ( which neofetch > /dev/null); then
+    if ( command -v neofetch > /dev/null); then
       # echo "install sucessful"
       neofetch
     else
       # echo "ref install"
-      install_neo
+      check_system_and_install_neo
     fi
 }
 
@@ -77,5 +76,4 @@ case $1 in
 esac
 
 }
-# main $1
-check_system
+main $1
