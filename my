@@ -15,7 +15,7 @@ function helps(){
 # check curl
 function check_curl(){
     if ( command -v curl > /dev/null ); then
-
+        echo "curl installed " > /dev/null
     else
         echo "curl not found, please install curl"
     fi
