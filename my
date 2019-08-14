@@ -12,12 +12,20 @@ function helps(){
     echo "	查看帮助信息"
 }
 
+# check curl
+function check_curl(){
+    if ( command -v curl > /dev/null ); then
+
+    else
+        echo "curl not found, please install curl"
+    fi
+}
 # check ipaddr
 function ip(){
     if ( command -v curl > /dev/null ); then
         curl myip.ipip.net
     else
-        echo "curl not found, Please install curl"
+        echo "curl not found, please install curl"
     fi
 }
 
@@ -28,7 +36,7 @@ function yum_install_neo(){
 function check_system_and_install_neo(){
     if(command -v apt > /dev/null); then
        sudo apt update -y &&sudo  apt install neofetch curl -y
-    elif(command -v yum > /dev/null && command -v curl);then
+    elif(command -v yum > /dev/null);then
        sudo yum_install_neo
     elif(command -v dnf > /dev/null);then
        sudo dnf install neofetch curl -y
@@ -63,6 +71,7 @@ function network(){
 
 # main
 function main(){
+check_curl
 case $1 in
      ip | IP)
           ip ;;
