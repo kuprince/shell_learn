@@ -24,8 +24,6 @@ function check_curl(){
 function ip(){
     if ( command -v curl > /dev/null ); then
         curl myip.ipip.net
-    else
-        echo "curl not found, please install curl"
     fi
 }
 
