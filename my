@@ -41,7 +41,7 @@ function check_system_and_install_neo(){
     elif(command -v zypper> /dev/null);then
        sudo zypper install neofetch -y
     elif(command -v pacman> /dev/null);then
-       sudo pacman -Syy && sudo pacman -S neofetch 
+       sudo pacman -Syy --noconfirm && sudo pacman -S --noconfirm neofetch 
     else 
        echo "This system is not supported"
     fi
