@@ -27,7 +27,7 @@ function yum_install_neo(){
 }
 function check_system_and_install_neo(){
     if(command -v apt > /dev/null); then
-       sudo apt update -y &&sudo  apt install neofetch curl -y
+       sudo apt update -y && apt install neofetch curl -y
     elif(command -v yum > /dev/null && command -v curl);then
        sudo yum_install_neo
     elif(command -v dnf > /dev/null);then
@@ -35,7 +35,8 @@ function check_system_and_install_neo(){
     elif(command -v zypper> /dev/null);then
        sudo zypper install neofetch -y
     elif(command -v pacman> /dev/null);then
-       sudo pacman -Syy && sudo pacman -S neofetch 
+       echo "pacman"
+       sudo pacman -Syy && apt install neofetch -y
     else 
        echo "This system is not supported"
     fi
