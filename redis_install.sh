@@ -11,12 +11,12 @@
 # ====================================================
 
 function ready(){
-    useradd -r redis -s /sbin/nologin && yum install -y gcc tcl jemalloc-devel wget
+    useradd -r redis -s /sbin/nologin && yum install -y gcc tcl jemalloc-devel wget && mkdir /usr/local/redis/
 }
 
 
 function make_install(){
-    cd /tmp &&
+    cd /tmp && 
     wget -c http://download.redis.io/releases/redis-stable.tar.gz &&
     tar xf redis-stable.tar.gz &&
     cd redis-stable &&
