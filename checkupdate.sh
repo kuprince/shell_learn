@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DT=$(date '+%H%M%S')
+DT=$(date '+%H:%M:%S')
 old_name='yh2_linux.out'
 new_name='new'${old_name}
 
@@ -14,9 +14,11 @@ function pull_newfile(){
 
 function check_data(){
     if [ $(ls -l $old_name | awk '{print $(NF-1)}') == $(ls -l $new_name | awk '{print $(NF-1)}') ]; then
-        echo '最后更新时间--->' $(ls -l $new_name | awk '{print $(NF-1)}')
+        echo "$DT"
+        echo -e "\033[31m最后更新时间--->\033[0m" $(ls -l $new_name | awk '{print $(NF-1)}')
     else 
-        echo "快去更新"
+        echo "$DT"
+        echo -e "\033[31m=====快去更新=====033[0m"
     fi
 }
 
